@@ -1,0 +1,4 @@
+name = "stuart"
+
+[database]
+url = "sqlite:///stuart.db"
