@@ -6,7 +6,7 @@ from stuart.database import get_session
 from stuart.models import Stuart
 from stuart.serializers import StuartIn, StuartOut
 
-api = FastAPI(title="stuart ")
+api = FastAPI(title="stuart")
 
 
 @api.get("/stuart", response_model=List[StuartOut])
@@ -17,8 +17,8 @@ async def list_events(style: Optional[str] = None):
 
 
 @api.post("/stuart", response_model=StuartOut)
-async def add_parameters(StuartIn: StuartIn, response: Response):
-    stuart = stuart(**stuart_in.dict())
+async def add_parameters(stuart_in: StuartIn, response: Response):
+    stuart = Stuart(**stuart_in.dict())
     with get_session() as session:
         session.add(stuart)
         session.commit()
