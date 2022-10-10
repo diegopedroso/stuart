@@ -2,18 +2,26 @@ from typing import List, Optional
 from stuart.serializers import StuartIn
 from fastapi import FastAPI, Response, status
 from stuart.core import get_event_source
+from stuart.core import get_event_source_by_max_capacity
 from stuart.database import get_session
 from stuart.models import Stuart
 from stuart.serializers import StuartIn, StuartOut
 
 api = FastAPI(title="stuart")
 
-
 @api.get("/stuart", response_model=List[StuartOut])
-async def list_events(style: Optional[str] = None):
+async def list_events(max_capacity: int, style: Optional[str] = None):
     """Stuart Couriers max Capacity (in liters)"""
-    stuart = get_event_source(style)
+    print(max_capacity)
+    stuart = get_event_source_by_max_capacity(max_capacity)
     return stuart
+
+
+# @api.get("/stuart/<int:id>", response_model=List[StuartOut])
+# async def list_events(id, style: Optional[str] = None):
+#     """Stuart Couriers max Capacity (in liters)"""
+#     stuart = get_event_source_by_id(id, style)
+#     return stuart    
 
 
 @api.post("/stuart", response_model=StuartOut)

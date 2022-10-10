@@ -19,7 +19,7 @@ def test_create_event_via_api():
 
 
 def test_list_events():
-    response = client.get("/stuart")
+    response = client.get("/stuart?max_capacity=45")
     assert response.status_code == 200
     result = response.json()
     assert len(result) == 0
