@@ -5,7 +5,7 @@ runner = CliRunner()
 
 def test_add_parameters():
     result = runner.invoke(
-        main, ["add-parameters", "--max-capacity=45", "--capacity-required=10"]
+        main, ["add-parameters", "--max-capacity=45"]
     )
     assert result.exit_code == 0
     assert "New Couriers Capacity Added" in result.stdout

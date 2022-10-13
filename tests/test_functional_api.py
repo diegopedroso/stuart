@@ -8,18 +8,16 @@ def test_create_event_via_api():
         "/stuart",
         json={
             "max_capacity": "45",
-            "capacity_required": "10",
         },
     )
     assert response.status_code == 201
     result = response.json()
     assert result["max_capacity"] == 45
-    assert result["capacity_required"] == 10
     assert result["id"] == 1
 
 
 def test_list_events():
-    response = client.get("/stuart?max_capacity=45")
+    response = client.get("/capacity_required?max_capacity=45")
     assert response.status_code == 200
     result = response.json()
     assert len(result) == 0

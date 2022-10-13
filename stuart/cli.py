@@ -12,11 +12,10 @@ console = Console()
 @main.command()
 def add_parameters(
     max_capacity: int = typer.Option(...),
-    capacity_required: int = typer.Option(...),
 
 ):
     """Adds new Couriers Parameters"""
-    if add_event_source(max_capacity, capacity_required):
+    if add_event_source(max_capacity):
         print(":motorcycle: New Couriers Capacity Added :truck:")
     else:
         print(":no_entry: - Cannot add Event.")
@@ -32,7 +31,6 @@ def list_events(style: Optional[str] = None):
     headers = [
         "id",
         "max_capacity",
-        "capacity_required",
     ]
     for header in headers:
         table.add_column(header, style="magenta")

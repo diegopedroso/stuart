@@ -1,9 +1,9 @@
 from stuart.core import get_event_source, add_event_source
 
 def test_add_event_source():
-    assert add_event_source("45", "10")
+    assert add_event_source("45")
 
 def test_get_event_source():
-    add_event_source("45", "10")
+    add_event_source("45")
     results = get_event_source()
     assert len(results) > 0

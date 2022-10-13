@@ -13,7 +13,7 @@ stuart --help
 ```
 
 ```bash
-stuart add-events max_capacity="45" capacity_required="10"
+stuart add-events max_capacity="45"
 ```
 
 ```bash
@@ -22,6 +22,11 @@ stuart list
 
 # Tests
 
+```bash
+pytest -v
+```
+
 # API
 
 # Kubernetes
+
