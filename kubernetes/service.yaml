@@ -5,6 +5,7 @@ metadata:
   labels:
     app: stuart
   name: stuart
+  namespace: stuart
 spec:
   ports:
   - port: 8000

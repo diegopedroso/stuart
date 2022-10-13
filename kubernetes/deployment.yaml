@@ -4,6 +4,7 @@ metadata:
   labels:
     app: stuart
   name: stuart
+  namespace: stuart
 spec:
   replicas: 1
   selector:
@@ -16,9 +17,14 @@ spec:
         app: stuart
     spec:
       containers:
-      - image: 
+      - image: $DOCKER_IMAGE
         name: stuart
         ports:
         - containerPort: 8000
-        resources: {}
-status: {}
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"        

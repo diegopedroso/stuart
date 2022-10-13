@@ -7,6 +7,7 @@ from stuart.database import get_session
 from stuart.models import Stuart
 from stuart.serializers import StuartIn, StuartOut
 from fastapi.encoders import jsonable_encoder
+from stuart.database import get_session, update_stuart
 
 api = FastAPI(title="stuart")
 
@@ -27,8 +28,8 @@ async def add_parameters(stuart_in: StuartIn, response: Response):
     response.status_code = status.HTTP_201_CREATED
     return stuart
 
-@api.put("/update/{item_id}", response_model=Stuart)
-async def update_item(id: str, stuart: Stuart):
-    update_item_encoded = jsonable_encoder(Stuart)
-    stuart[item_id] = update_item_encoded
-    return update_item_encoded
+@api.put("/update_capacity/{item_id}", response_model=StuartOut)
+async def update_item(item_id: str, stuart_in: StuartIn, response: Response):
+    stuart = update_stuart(item_id, stuart_in)
+    response.status_code = status.HTTP_200_OK
+    return stuart
