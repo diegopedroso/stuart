@@ -63,6 +63,11 @@ Stuart Couriers informations (in liters).
 
 ## API
 
+To run the server locally:
+
+```bash
+uvicorn stuart.api:api --reload
+```
 
 Exemple to POST Couriers capacity using API: 
 
